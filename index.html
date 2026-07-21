@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Spa Detailing Poznań | Perfekcja w Każdym Detalu</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f6f6f6',
+                            100: '#e7e7e7',
+                            800: '#1a1a1a',
+                            900: '#0f0f0f',
+                            950: '#080808',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::selection {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .glass-panel {
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .custom-gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-brand-950 text-neutral-100 font-sans antialiased selection:bg-white selection:text-black">
+
+    <!-- NAVIGATION -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-9 h-9 bg-white/10 border border-white/20 rounded-none flex items-center justify-center group-hover:border-white transition-colors">
+                    <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+                </div>
+                <span class="text-xl font-bold tracking-[0.2em] font-display text-white">AUTO-SPA</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-[0.15em] text-neutral-400">
+                <a href="#uslugi" class="hover:text-white transition-colors">USŁUGI</a>
+                <a href="#realizacje" class="hover:text-white transition-colors">REALIZACJE</a>
+                <a href="#dlaczego-my" class="hover:text-white transition-colors">DLACZEGO MY</a>
+                <a href="#o-nas" class="hover:text-white transition-colors">O NAS</a>
+                <a href="#opinie" class="hover:text-white transition-colors">OPINIE</a>
+                <a href="#kontakt" class="hover:text-white transition-colors">KONTAKT</a>
+            </div>
+
+            <div class="hidden md:block">
+                <a href="#kontakt" class="bg-white text-black text-xs font-bold tracking-[0.15em] px-6 py-3 hover:bg-neutral-200 transition-all duration-300 inline-block">
+                    UMÓW WIZYTĘ
+                </a>
+            </div>
+
+            <!-- Mobile Menu Trigger -->
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none" aria-label="Open Menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden fixed inset-0 bg-brand-950 z-40 flex-col justify-center items-center gap-8 p-6 text-center">
+            <button id="mobile-menu-close" class="absolute top-6 right-6 text-white" aria-label="Close Menu">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+            <a href="#uslugi" class="text-lg tracking-[0.2em] text-neutral-300 hover:text-white uppercase mobile-link">Usługi</a>
+            <a href="#realizacje" class="text-lg tracking-[0.2em] text-neutral-300 hover:text-white uppercase mobile-link">Realizacje</a>
+            <a href="#dlaczego-my" class="text-lg tracking-[0.2em] text-neutral-300 hover:text-white uppercase mobile-link">Dlaczego My</a>
+            <a href="#o-nas" class="text-lg tracking-[0.2em] text-neutral-300 hover:text-white uppercase mobile-link">O nas</a>
+            <a href="#opinie" class="text-lg tracking-[0.2em] text-neutral-300 hover:text-white uppercase mobile-link">Opinie</a>
+            <a href="#kontakt" class="text-lg tracking-[0.2em] text-neutral-300 hover:text-white uppercase mobile-link">Kontakt</a>
+            <a href="#kontakt" class="mt-4 bg-white text-black font-bold tracking-[0.15em] px-8 py-4 text-sm w-full max-w-xs mobile-link">
+                UMÓW WIZYTĘ
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=2070&auto=format&fit=crop"
+                 alt="Exotic Car Detailing"
+                 class="w-full h-full object-cover object-center scale-105 transition-transform duration-10000">
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-950/80 via-brand-950/70 to-brand-950"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-brand-950/40 to-brand-950"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto py-12">
+            <!-- Trust Label -->
+            <div class="inline-flex items-center gap-3 px-4 py-2 border border-white/10 bg-black/40 backdrop-blur-md mb-8">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-xs font-semibold tracking-[0.25em] text-neutral-300 uppercase">PROFESJONALNY DETAILING • POZNAŃ</span>
+            </div>
+
+            <!-- Hero Headline -->
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold font-display text-white tracking-tight leading-[1.1] mb-8">
+                PERFEKCJA W <span class="custom-gradient-text">KAŻDYM DETALU</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-base sm:text-lg md:text-xl text-neutral-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+                Profesjonalny detailing samochodowy w Poznaniu. Przywracamy blask, chronimy lakier i dbamy o każdy element Twojego samochodu.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                <a href="#kontakt" class="w-full sm:w-auto px-9 py-4 bg-white text-black font-bold text-xs tracking-[0.2em] hover:bg-neutral-200 transition-all duration-300 flex items-center justify-center gap-3">
+                    <span>UMÓW WIZYTĘ</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <a href="#uslugi" class="w-full sm:w-auto px-9 py-4 border border-white/20 bg-black/30 backdrop-blur-sm text-white font-bold text-xs tracking-[0.2em] hover:bg-white/10 hover:border-white/40 transition-all duration-300 flex items-center justify-center">
+                    ZOBACZ USŁUGI
+                </a>
+            </div>
+
+            <!-- Quick Metrics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-10 border-t border-white/10 max-w-3xl mx-auto text-left sm:text-center">
+                <div>
+                    <div class="text-2xl font-bold font-display text-white">5.0 / 5.0</div>
+                    <div class="text-xs text-neutral-500 uppercase tracking-wider mt-1">Ocena Google</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold font-display text-white">100%</div>
+                    <div class="text-xs text-neutral-500 uppercase tracking-wider mt-1">Precyzji</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold font-display text-white">10+ Lat</div>
+                    <div class="text-xs text-neutral-500 uppercase tracking-wider mt-1">Doświadczenia</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold font-display text-white">Poznań</div>
+                    <div class="text-xs text-neutral-500 uppercase tracking-wider mt-1">Lutycka 39</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SERVICES SECTION -->
+    <section id="uslugi" class="py-28 bg-brand-950 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
+                <div>
+                    <span class="text-xs font-bold tracking-[0.25em] text-neutral-500 uppercase block mb-3">Zakres Usług</span>
+                    <h2 class="text-3xl md:text-5xl font-bold font-display text-white tracking-tight">KOMPLEKSOWA PIELĘGNACJA</h2>
+                </div>
+                <p class="text-neutral-400 max-w-md text-sm leading-relaxed">
+                    Stosujemy wyłącznie certyfikowane preparaty oraz zaawansowane technologie chroniące powłokę lakierniczą Twojego pojazdu.
+                </p>
+            </div>
+
+            <!-- Grid of Services -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 bg-brand-900/60 border border-white/5 hover:border-white/20 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-black border border-white/10 flex items-center justify-center text-neutral-300 group-hover:text-white group-hover:border-white/30 transition-all mb-8">
+                            <i data-lucide="droplets" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold font-display text-white mb-3 tracking-wide">DETAILING ZEWNĘTRZNY</h3>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-8">
+                            Wieloetapowe bezpieczne mycie, dekontaminacja lakieru, czyszczenie felg oraz dogłębne odżywienie elementów z tworzyw.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 flex justify-between items-center text-xs tracking-wider">
+                        <span class="text-neutral-500 uppercase">Cena od</span>
+                        <span class="text-white font-semibold font-display">300 PLN</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="p-8 bg-brand-900/60 border border-white/5 hover:border-white/20 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-black border border-white/10 flex items-center justify-center text-neutral-300 group-hover:text-white group-hover:border-white/30 transition-all mb-8">
+                            <i data-lucide="car" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold font-display text-white mb-3 tracking-wide">DETAILING WNĘTRZA</h3>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-8">
+                            Ekstrakcyjne czyszczenie tapicerki, pielęgnacja i impregnacja skór, czyszczenie parowe i pełna ozonowanie kabiny.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 flex justify-between items-center text-xs tracking-wider">
+                        <span class="text-neutral-500 uppercase">Cena od</span>
+                        <span class="text-white font-semibold font-display">450 PLN</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="p-8 bg-brand-900/60 border border-white/5 hover:border-white/20 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-black border border-white/10 flex items-center justify-center text-neutral-300 group-hover:text-white group-hover:border-white/30 transition-all mb-8">
+                            <i data-lucide="sparkles" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold font-display text-white mb-3 tracking-wide">KOREKTA LAKIERU</h3>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-8">
+                            Usuwanie zarysowań, zmatowień i mikrorys. Przywracamy lakierowi fabryczną głębię, szklistość i perfekcyjne odbicie.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 flex justify-between items-center text-xs tracking-wider">
+                        <span class="text-neutral-500 uppercase">Cena od</span>
+                        <span class="text-white font-semibold font-display">1 200 PLN</span>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="p-8 bg-brand-900/60 border border-white/5 hover:border-white/20 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-black border border-white/10 flex items-center justify-center text-neutral-300 group-hover:text-white group-hover:border-white/30 transition-all mb-8">
+                            <i data-lucide="shield" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold font-display text-white mb-3 tracking-wide">POWŁOKA CERAMICZNA</h3>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-8">
+                            Wieloletnia ochrona przed promieniowaniem UV, chemią drogową i ptasimi odchodami. Ekstremalny efekt hydrofobowy.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 flex justify-between items-center text-xs tracking-wider">
+                        <span class="text-neutral-500 uppercase">Cena od</span>
+                        <span class="text-white font-semibold font-display">1 500 PLN</span>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="p-8 bg-brand-900/60 border border-white/5 hover:border-white/20 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-black border border-white/10 flex items-center justify-center text-neutral-300 group-hover:text-white group-hover:border-white/30 transition-all mb-8">
+                            <i data-lucide="layers" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold font-display text-white mb-3 tracking-wide">FOLIA PPF</h3>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-8">
+                            Bezbarwna folia ochronna o właściwościach samoregeneracji. Najskuteczniejsza tarcza przed odpryskami od kamieni.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 flex justify-between items-center text-xs tracking-wider">
+                        <span class="text-neutral-500 uppercase">Cena od</span>
+                        <span class="text-white font-semibold font-display">Wycena Indywidualna</span>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="p-8 bg-brand-900/60 border border-white/5 hover:border-white/20 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-black border border-white/10 flex items-center justify-center text-neutral-300 group-hover:text-white group-hover:border-white/30 transition-all mb-8">
+                            <i data-lucide="sun" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-lg font-bold font-display text-white mb-3 tracking-wide">RENOWACJA REFLEKTORÓW</h3>
+                        <p class="text-neutral-400 text-sm leading-relaxed mb-8">
+                            Polerowanie oraz zabezpieczenie lakierem bezbarwnym z filtrem UV. Przywracamy przejrzystość i fabryczny zasięg światła.
+                        </p>
+                    </div>
+                    <div class="pt-6 border-t border-white/5 flex justify-between items-center text-xs tracking-wider">
+                        <span class="text-neutral-500 uppercase">Cena od</span>
+                        <span class="text-white font-semibold font-display">250 PLN</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="#kontakt" class="inline-flex items-center gap-3 text-xs font-bold tracking-[0.2em] text-white hover:text-neutral-300 transition-colors uppercase py-2 border-b border-white/30 hover:border-white">
+                    <span>ZOBACZ PEŁNĄ OFERTĘ I CENNIK</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEFORE / AFTER SECTION -->
+    <section class="py-28 bg-brand-900 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-xs font-bold tracking-[0.25em] text-neutral-500 uppercase block mb-3">Metamorfoza</span>
+                    <h2 class="text-3xl md:text-5xl font-bold font-display text-white tracking-tight mb-6">RÓŻNICA, KTÓRĄ WIDAĆ</h2>
+                    <p class="text-neutral-400 leading-relaxed text-base mb-8">
+                        Profesjonalna korekta lakieru eliminuje mory, koliste zarysowania od myjni automatycznych oraz mikrouszkodzenia. Przywracamy głęboką czerń i najwyższy możliwy poziom lustrzanego odbicia.
+                    </p>
+
+                    <div class="space-y-4 mb-10">
+                        <div class="flex items-center gap-4 text-sm text-neutral-300">
+                            <div class="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-white">
+                                <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                            </div>
+                            <span>Usunięcie do 95% mikrorys i hologramów</span>
+                        </div>
+                        <div class="flex items-center gap-4 text-sm text-neutral-300">
+                            <div class="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-white">
+                                <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                            </div>
+                            <span>Ekstremalna głębia koloru i "wet look"</span>
+                        </div>
+                        <div class="flex items-center gap-4 text-sm text-neutral-300">
+                            <div class="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-white">
+                                <i data-lucide="check" class="w-3.5 h-3.5"></i>
+                            </div>
+                            <span>Trwała ochrona ceramiczna lub folia PPF</span>
+                        </div>
+                    </div>
+
+                    <a href="#kontakt" class="inline-block bg-white text-black font-bold text-xs tracking-[0.2em] px-8 py-4 hover:bg-neutral-200 transition-colors">
+                        ZAMÓW KOREKTĘ LAKIERU
+                    </a>
+                </div>
+
+                <!-- Comparison Display -->
+                <div class="relative aspect-[4/3] bg-black border border-white/10 overflow-hidden group">
+                    <div class="absolute inset-0 flex">
+                        <!-- Before Half -->
+                        <div class="w-1/2 h-full relative overflow-hidden border-r border-white/30">
+                            <img src="https://images.unsplash.com/photo-1550346182-14c40cebd7cc?auto=format&fit=crop&q=80&w=1000"
+                                 class="absolute inset-0 w-[200%] max-w-none h-full object-cover filter grayscale contrast-75 brightness-75"
+                                 alt="Before Detailing">
+                            <span class="absolute bottom-4 left-4 bg-black/80 backdrop-blur-md px-3 py-1 text-[10px] font-bold tracking-[0.2em] text-neutral-400">PRZED</span>
+                        </div>
+                        <!-- After Half -->
+                        <div class="w-1/2 h-full relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1550346182-14c40cebd7cc?auto=format&fit=crop&q=80&w=1000"
+                                 class="absolute inset-0 w-[200%] max-w-none -ml-[100%] h-full object-cover"
+                                 alt="After Detailing">
+                            <span class="absolute bottom-4 right-4 bg-white text-black px-3 py-1 text-[10px] font-bold tracking-[0.2em]">PO</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO / REALIZATIONS -->
+    <section id="realizacje" class="py-28 bg-brand-950">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <span class="text-xs font-bold tracking-[0.25em] text-neutral-500 uppercase block mb-3">Portfolio</span>
+                    <h2 class="text-3xl md:text-5xl font-bold font-display text-white tracking-tight">NASZE REALIZACJE</h2>
+                </div>
+                <div class="flex gap-2">
+                    <span class="text-xs text-neutral-400 tracking-wider">ZOBACZ WIĘCEJ NA INSTAGRAMIE @AUTOSPA_POZNAN</span>
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Item 1 -->
+                <div class="group relative aspect-[16/10] overflow-hidden bg-brand-900 border border-white/5 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1619682817481-e994891cd1f5?q=80&w=1000&auto=format&fit=crop"
+                         alt="Porsche 911 GT3"
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
+                        <span class="text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase mb-1">POWŁOKA CERAMICZNA 9H</span>
+                        <h3 class="text-xl font-bold font-display text-white">Porsche 911 GT3</h3>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="group relative aspect-[16/10] overflow-hidden bg-brand-900 border border-white/5 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1614200187524-dc4b892acf16?q=80&w=1000&auto=format&fit=crop"
+                         alt="Audi RS6 Avant"
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
+                        <span class="text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase mb-1">FOLIA PPF FULL FRONT</span>
+                        <h3 class="text-xl font-bold font-display text-white">Audi RS6 Avant</h3>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="group relative aspect-[16/10] overflow-hidden bg-brand-900 border border-white/5 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1000&auto=format&fit=crop"
+                         alt="BMW M4 Competition"
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
+                        <span class="text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase mb-1">PEŁNA KOREKTA LAKIERU</span>
+                        <h3 class="text-xl font-bold font-display text-white">BMW M4 Competition</h3>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="group relative aspect-[16/10] overflow-hidden bg-brand-900 border border-white/5 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=1000&auto=format&fit=crop"
+                         alt="Mercedes-AMG GT"
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
+                        <span class="text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase mb-1">DETAILING WNĘTRZA & SKÓR</span>
+                        <h3 class="text-xl font-bold font-display text-white">Mercedes-AMG GT</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section id="dlaczego-my" class="py-24 bg-brand-900 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-20">
+                <span class="text-xs font-bold tracking-[0.25em] text-neutral-500 uppercase block mb-3">Atuty</span>
+                <h2 class="text-3xl md:text-4xl font-bold font-display text-white">STANDARD PREMIUM</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-6 bg-brand-950 border border-white/5">
+                    <i data-lucide="award" class="w-8 h-8 text-neutral-300 mb-6"></i>
+                    <h3 class="font-display font-bold text-white mb-2 tracking-wide">Doświadczenie i precyzja</h3>
+                    <p class="text-neutral-400 text-xs leading-relaxed">Certyfikowani specjaliści dbający o najmniejszy detale każdego auta.</p>
+                </div>
+                <div class="p-6 bg-brand-950 border border-white/5">
+                    <i data-lucide="shield-check" class="w-8 h-8 text-neutral-300 mb-6"></i>
+                    <h3 class="font-display font-bold text-white mb-2 tracking-wide">Profesjonalne produkty</h3>
+                    <p class="text-neutral-400 text-xs leading-relaxed">Wyłącznie światowe marki kosmetyków detailingowych i folii.</p>
+                </div>
+                <div class="p-6 bg-brand-950 border border-white/5">
+                    <i data-lucide="user-check" class="w-8 h-8 text-neutral-300 mb-6"></i>
+                    <h3 class="font-display font-bold text-white mb-2 tracking-wide">Indywidualne podejście</h3>
+                    <p class="text-neutral-400 text-xs leading-relaxed">Szyte na miarę pakiety dostosowane do stanu i potrzeb Twojego pojazdu.</p>
+                </div>
+                <div class="p-6 bg-brand-950 border border-white/5">
+                    <i data-lucide="eye" class="w-8 h-8 text-neutral-300 mb-6"></i>
+                    <h3 class="font-display font-bold text-white mb-2 tracking-wide">Dbałość o każdy detal</h3>
+                    <p class="text-neutral-400 text-xs leading-relaxed">Bezkompromisowa kontrola jakości przed wydaniem pojazdu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section class="py-28 bg-brand-950 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-20">
+                <span class="text-xs font-bold tracking-[0.25em] text-neutral-500 uppercase block mb-3">Jak działamy</span>
+                <h2 class="text-3xl md:text-4xl font-bold font-display text-white">PROCES PRACY</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                <!-- Step 1 -->
+                <div class="relative">
+                    <div class="text-4xl font-bold font-display text-neutral-800 mb-4">01</div>
+                    <h3 class="text-base font-bold font-display text-white mb-2">KONTAKT</h3>
+                    <p class="text-neutral-400 text-xs leading-relaxed">Wypełnij formularz lub zadzwoń. Omówimy wstępnie potrzeby pojazdu.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="relative">
+                    <div class="text-4xl font-bold font-display text-neutral-800 mb-4">02</div>
+                    <h3 class="text-base font-bold font-display text-white mb-2">KONSULTACJA</h3>
+                    <p class="text-neutral-400 text-xs leading-relaxed">Oględziny lakieru w studiu pod specjalistycznym światłem i wycena.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="relative">
+                    <div class="text-4xl font-bold font-display text-neutral-800 mb-4">03</div>
+                    <h3 class="text-base font-bold font-display text-white mb-2">DETAILING</h3>
+                    <p class="text-neutral-400 text-xs leading-relaxed">Wielogodzinna, precyzyjna praca nad każdym elementem samochodu.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="relative">
+                    <div class="text-4xl font-bold font-display text-neutral-800 mb-4">04</div>
+                    <h3 class="text-base font-bold font-display text-white mb-2">ODBIÓR SAMOCHODU</h3>
+                    <p class="text-neutral-400 text-xs leading-relaxed">Prezentacja efektów i przekazanie zaleceń co do dalszej pielęgnacji.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="opinie" class="py-28 bg-brand-900 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <span class="text-xs font-bold tracking-[0.25em] text-neutral-500 uppercase block mb-3">Zaufanie</span>
+                    <h2 class="text-3xl md:text-5xl font-bold font-display text-white tracking-tight">OPINIE KLIENTÓW</h2>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="flex text-amber-400">
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                    </div>
+                    <span class="text-xs font-bold text-white tracking-wider">5.0 / 5.0 W GOOGLE</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="p-8 bg-brand-950 border border-white/5 flex flex-col justify-between">
+                    <p class="text-neutral-300 text-sm leading-relaxed mb-8 italic">
+                        "Oddałem nowe auto na zabezpieczenie folią PPF oraz powłokę ceramiczną. Wykonanie idealne, brak widocznych łączeń folii. Auto lśni bardziej niż w salonie."
+                    </p>
+                    <div class="pt-6 border-t border-white/5">
+                        <div class="font-bold text-white text-sm">Milano Cosmetic</div>
+                        <div class="text-xs text-neutral-500">Google Review • 5/5</div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="p-8 bg-brand-950 border border-white/5 flex flex-col justify-between">
+                    <p class="text-neutral-300 text-sm leading-relaxed mb-8 italic">
+                        "Bardzo dokładnie czyszczenie. Polecam każdego, kto ceni sobie bezkompromisową czystość we wnętrzu i idealny lakier."
+                    </p>
+                    <div class="pt-6 border-t border-white/5">
+                        <div class="font-bold text-white text-sm">Виталий Коваленко</div>
+                        <div class="text-xs text-neutral-500">Google Review • 5/5</div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="p-8 bg-brand-950 border border-white/5 flex flex-col justify-between">
+                    <p class="text-neutral-300 text-sm leading-relaxed mb-8 italic">
+                        "Pełny profesjonalizm i świetne podejście do klienta. Korekta lakieru w moim 5-letnim BMW usunęła wszystkie rysy. Wygląda jak nowe!"
+                    </p>
+                    <div class="pt-6 border-t border-white/5">
+                        <div class="font-bold text-white text-sm">Piotr W.</div>
+                        <div class="text-xs text-neutral-500">BMW M3 • Poznań</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="o-nas" class="py-28 bg-brand-950">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <div class="w-12 h-12 bg-white/5 border border-white/10 mx-auto flex items-center justify-center mb-8">
+                <i data-lucide="shield" class="w-6 h-6 text-white"></i>
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-bold font-display text-white leading-snug mb-8">
+                Nie zajmujemy się tylko myciem samochodów. Przywracamy ich charakter, chronimy ich wartość i dbamy o każdy detal.
+            </h2>
+            <p class="text-neutral-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto font-light">
+                Auto-Spa Detailing w Poznaniu to studio stworzone z pasji do motoryzacyjnej perfekcji. Łączymy rzemieślniczą precyzję z nowoczesnymi technologiami ochrony powierzchni, tworząc przestrzeń dla właścicieli aut, którzy oczekują wyjątkowych rezultatów.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTACT / BOOKING SECTION -->
+    <section id="kontakt" class="py-28 bg-brand-900 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span class="text-xs font-bold tracking-[0.25em] text-neutral-500 uppercase block mb-3">Rezerwacja</span>
+                <h2 class="text-3xl md:text-5xl font-bold font-display text-white tracking-tight">TWÓJ SAMOCHÓD ZASŁUGUJE NA WIĘCEJ</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Contact Info Column -->
+                <div class="lg:col-span-5 space-y-10">
+                    <div>
+                        <h3 class="text-sm font-bold tracking-[0.2em] text-white uppercase mb-6">STUDIO POZNAŃ</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-brand-950 border border-white/10 flex items-center justify-center text-white shrink-0">
+                                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-neutral-500 uppercase tracking-wider mb-1">Adres</div>
+                                    <div class="text-sm font-semibold text-white">Lutycka 39, 60-415 Poznań</div>
+                                    <div class="text-xs text-neutral-400">Ratajczaka 18, Poznań</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-brand-950 border border-white/10 flex items-center justify-center text-white shrink-0">
+                                    <i data-lucide="phone" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-neutral-500 uppercase tracking-wider mb-1">Telefon</div>
+                                    <a href="tel:+48578294176" class="text-sm font-semibold text-white hover:underline">+48 578 294 176</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-brand-950 border border-white/10 flex items-center justify-center text-white shrink-0">
+                                    <i data-lucide="clock" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-neutral-500 uppercase tracking-wider mb-1">Godziny Otwarta</div>
+                                    <div class="text-sm font-semibold text-white">Otwarte 24h / 7 dni w tygodniu</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Mock / Info Box -->
+                    <div class="p-6 bg-brand-950 border border-white/5 relative overflow-hidden">
+                        <div class="text-xs font-bold text-white tracking-wider mb-2">LOKALIZACJA STRATEGICZNA</div>
+                        <p class="text-xs text-neutral-400 leading-relaxed mb-4">Dogodny dojazd w Poznaniu z bezpłatnym, monitorowanym parkingiem dla klientów.</p>
+                        <a href="https://maps.google.com" target="_blank" class="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] text-white uppercase hover:underline">
+                            <span>OTWÓRZ W GOOGLE MAPS</span>
+                            <i data-lucide="external-link" class="w-3 h-3"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Booking Form Column -->
+                <div class="lg:col-span-7 bg-brand-950 p-8 sm:p-10 border border-white/10">
+                    <form id="booking-form" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-[10px] font-bold tracking-[0.2em] text-neutral-400 uppercase mb-2">Imię i Nazwisko *</label>
+                                <input type="text" required placeholder="Jan Kowalski"
+                                       class="w-full bg-brand-900 border border-white/10 px-4 py-3 text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-white transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold tracking-[0.2em] text-neutral-400 uppercase mb-2">Numer Telefonu *</label>
+                                <input type="tel" required placeholder="+48 000 000 000"
+                                       class="w-full bg-brand-900 border border-white/10 px-4 py-3 text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-white transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-[10px] font-bold tracking-[0.2em] text-neutral-400 uppercase mb-2">E-mail *</label>
+                                <input type="email" required placeholder="jan@example.com"
+                                       class="w-full bg-brand-900 border border-white/10 px-4 py-3 text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-white transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold tracking-[0.2em] text-neutral-400 uppercase mb-2">Wybierz Usługę</label>
+                                <select class="w-full bg-brand-900 border border-white/10 px-4 py-3 text-sm text-white focus:outline-none focus:border-white transition-colors">
+                                    <option value="ceramika">Powłoka Ceramiczna</option>
+                                    <option value="ppf">Folia Ochronna PPF</option>
+                                    <option value="korekta">Korekta Lakieru</option>
+                                    <option value="wnetrze">Detailing Wnętrza</option>
+                                    <option value="zewnetrzny">Detailing Zewnętrzny</option>
+                                    <option value="inno">Inne / Konsultacja</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] font-bold tracking-[0.2em] text-neutral-400 uppercase mb-2">Preferowany Termin</label>
+                            <input type="date"
+                                   class="w-full bg-brand-900 border border-white/10 px-4 py-3 text-sm text-white focus:outline-none focus:border-white transition-colors">
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] font-bold tracking-[0.2em] text-neutral-400 uppercase mb-2">Wiadomość (Marka, Model, Rok)</label>
+                            <textarea rows="4" placeholder="Podaj szczegóły dotyczące pojazdu..."
+                                      class="w-full bg-brand-900 border border-white/10 px-4 py-3 text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-white transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-white text-black font-bold text-xs tracking-[0.2em] uppercase py-4 hover:bg-neutral-200 transition-colors">
+                            WYŚLIJ ZAPYTANIE
+                        </button>
+
+                        <div id="form-success" class="hidden p-4 bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 text-xs text-center">
+                            Dziękujemy za kontakt! Skontaktujemy się z Tobą w najkrótszym możliwym czasie.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-950 border-t border-white/10 py-16 text-neutral-500 text-xs">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-white"></i>
+                        <span class="text-lg font-bold tracking-[0.2em] font-display text-white">AUTO-SPA</span>
+                    </div>
+                    <p class="text-neutral-400 leading-relaxed">
+                        Luksusowe studio auto detailingu w Poznaniu. Oferujemy powłoki ceramiczne, folie PPF oraz zaawansowaną korektę lakieru.
+                    </p>
+                </div>
+
+                <!-- Nav Links -->
+                <div>
+                    <h4 class="text-white font-bold tracking-[0.2em] uppercase mb-4">Nawigacja</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#uslugi" class="hover:text-white transition-colors">Usługi</a></li>
+                        <li><a href="#realizacje" class="hover:text-white transition-colors">Realizacje</a></li>
+                        <li><a href="#o-nas" class="hover:text-white transition-colors">O nas</a></li>
+                        <li><a href="#opinie" class="hover:text-white transition-colors">Opinie</a></li>
+                        <li><a href="#kontakt" class="hover:text-white transition-colors">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services Links -->
+                <div>
+                    <h4 class="text-white font-bold tracking-[0.2em] uppercase mb-4">Usługi</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#uslugi" class="hover:text-white transition-colors">Korekta Lakieru</a></li>
+                        <li><a href="#uslugi" class="hover:text-white transition-colors">Powłoki Ceramiczne</a></li>
+                        <li><a href="#uslugi" class="hover:text-white transition-colors">Folie PPF</a></li>
+                        <li><a href="#uslugi" class="hover:text-white transition-colors">Detailing Wnętrza</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Short -->
+                <div>
+                    <h4 class="text-white font-bold tracking-[0.2em] uppercase mb-4">Kontakt</h4>
+                    <p class="text-neutral-400 mb-2">Lutycka 39, Poznań</p>
+                    <p class="text-neutral-400 mb-2">+48 578 294 176</p>
+                    <p class="text-neutral-400">kontakt@autospapoznan.pl</p>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div>&copy; 2026 Auto-Spa Detailing Poznań. Wszystkie prawa zastrzeżone.</div>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">Polityka Prywatności</a>
+                    <a href="#" class="hover:text-white transition-colors">Regulamin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-panel', 'py-4');
+                navbar.classList.remove('py-6');
+            } else {
+                navbar.classList.remove('glass-panel', 'py-4');
+                navbar.classList.add('py-6');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        mobileMenuClose.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // Form Submit Mock
+        const bookingForm = document.getElementById('booking-form');
+        const formSuccess = document.getElementById('form-success');
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formSuccess.classList.remove('hidden');
+            bookingForm.reset();
+        });
+    </script>
+</body>
+</html>
