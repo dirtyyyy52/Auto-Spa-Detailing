@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc6b815b-3506-4671-9b86-bbd3fed06544" name="Changes" comment="Added page Auto Spa &amp; Detailing">
+    <list default="true" id="dc6b815b-3506-4671-9b86-bbd3fed06544" name="Changes" comment="Added correct forms">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -82,6 +82,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added page Auto Spa &amp; Detailing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added page Auto Spa &amp; Detailing" />
+    <MESSAGE value="Added correct forms" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added correct forms" />
   </component>
 </project>
