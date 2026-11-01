@@ -614,16 +614,23 @@
 
                 <!-- Booking Form Column -->
                 <div class="lg:col-span-7 bg-brand-950 p-8 sm:p-10 border border-white/10">
-                    <form id="booking-form" class="space-y-6">
+                    <form id="booking-form"
+                     name="booking"
+                     method="POST"
+                      data-netlify="true"
+                     class="space-y-6">
+
+                        <input type="hidden" name="form-name" value="booking">
+
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-[10px] font-bold tracking-[0.2em] text-neutral-400 uppercase mb-2">Imię i Nazwisko *</label>
-                                <input type="text" required placeholder="Jan Kowalski"
+                                <input type="text" required placeholder="Jan Kowalski" name="name"
                                        class="w-full bg-brand-900 border border-white/10 px-4 py-3 text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-white transition-colors">
                             </div>
                             <div>
                                 <label class="block text-[10px] font-bold tracking-[0.2em] text-neutral-400 uppercase mb-2">Numer Telefonu *</label>
-                                <input type="tel" required placeholder="+48 000 000 000"
+                                <input type="tel" required placeholder="+48 000 000 000" name="phone"
                                        class="w-full bg-brand-900 border border-white/10 px-4 py-3 text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-white transition-colors">
                             </div>
                         </div>
@@ -631,12 +638,12 @@
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-[10px] font-bold tracking-[0.2em] text-neutral-400 uppercase mb-2">E-mail *</label>
-                                <input type="email" required placeholder="jan@example.com"
+                                <input type="email" required placeholder="jan@example.com" name="email"
                                        class="w-full bg-brand-900 border border-white/10 px-4 py-3 text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-white transition-colors">
                             </div>
                             <div>
                                 <label class="block text-[10px] font-bold tracking-[0.2em] text-neutral-400 uppercase mb-2">Wybierz Usługę</label>
-                                <select class="w-full bg-brand-900 border border-white/10 px-4 py-3 text-sm text-white focus:outline-none focus:border-white transition-colors">
+                                <select  name="service" class="w-full bg-brand-900 border border-white/10 px-4 py-3 text-sm text-white focus:outline-none focus:border-white transition-colors ">
                                     <option value="ceramika">Powłoka Ceramiczna</option>
                                     <option value="ppf">Folia Ochronna PPF</option>
                                     <option value="korekta">Korekta Lakieru</option>
@@ -649,13 +656,14 @@
 
                         <div>
                             <label class="block text-[10px] font-bold tracking-[0.2em] text-neutral-400 uppercase mb-2">Preferowany Termin</label>
-                            <input type="date"
+                            <input type="date" name = "date"
                                    class="w-full bg-brand-900 border border-white/10 px-4 py-3 text-sm text-white focus:outline-none focus:border-white transition-colors">
                         </div>
 
                         <div>
                             <label class="block text-[10px] font-bold tracking-[0.2em] text-neutral-400 uppercase mb-2">Wiadomość (Marka, Model, Rok)</label>
-                            <textarea rows="4" placeholder="Podaj szczegóły dotyczące pojazdu..."
+                            <textarea rows="4" name="message"
+                                      placeholder="Podaj szczegóły dotyczące pojazdu..."
                                       class="w-full bg-brand-900 border border-white/10 px-4 py-3 text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-white transition-colors"></textarea>
                         </div>
 
@@ -664,7 +672,7 @@
                         </button>
 
                         <div id="form-success" class="hidden p-4 bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 text-xs text-center">
-                            Dziękujemy za kontakt! Skontaktujemy się z Tobą w najkrótszym możliwym czasie.
+                            To jest wersja demonstracyjna. Wiadomość nie została wysłana.
                         </div>
                     </form>
                 </div>
@@ -764,11 +772,137 @@
         // Form Submit Mock
         const bookingForm = document.getElementById('booking-form');
         const formSuccess = document.getElementById('form-success');
+        const nameInput = bookingForm.querySelector('input[type=text]');
+        const phoneInput = bookingForm.querySelector('input[type="tel"]');
+        const emailInput = bookingForm.querySelector('input[type="email"]');
 
-        bookingForm.addEventListener('submit', (e) => {
+        bookingForm.addEventListener("input", () => {
+    formSuccess.classList.add("hidden");
+});
+
+        function showError(message){
+            formSuccess.textContent = message;
+            formSuccess.classList.remove("hidden");
+
+            formSuccess.classList.remove("text-emerald-300");
+            formSuccess.classList.add("text-red-400");
+
+            formSuccess.classList.remove("border-emerald-500/30");
+            formSuccess.classList.add("border-red-500/30");
+
+            formSuccess.classList.remove("bg-emerald-950/80");
+            formSuccess.classList.add("bg-red-950/80");
+        }
+
+
+        function isValidPhoneLength(digits) {
+            if (digits.length !== 9 && digits.length !== 11) {
+                return false;
+             }
+
+                return true;
+             }
+
+        bookingForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            formSuccess.classList.remove('hidden');
-            bookingForm.reset();
+            console.log("NOWA WERSJA FORMULARZA 2.0");
+
+            const submitButton = bookingForm.querySelector('button[type="submit"]');
+
+            const userName = nameInput.value.trim();
+            const phoneNumber = phoneInput.value.trim();
+            const userEmail = emailInput.value.trim();
+            const invalid = /[^0-9+\s-]/.test(phoneNumber);
+            const digits = phoneNumber.replace(/\D/g, '');
+
+            if (userName === "") {
+                showError("Proszę wpisać imię i nazwisko!");
+                return;
+
+            }else if (userName.length < 3) {
+                showError('Imię musi mieć co najmniej 3 znaki!');
+                return;
+            }
+
+            if (phoneNumber === "") {
+                showError('Proszę wpisać numer telefonu!');
+                    return;
+                }else if (phoneNumber.length < 9) {
+                     formSuccess.textContent = "Numer telefonu jest za krótki!";
+                        formSuccess.classList.remove('hidden');
+                        return;
+            }
+
+            if (userEmail === "") {
+                showError('Proszę wpisać adres e-mail!');
+                return;
+            }
+
+            if (!userEmail.includes("@")) {
+                showError('Nieprawidłowy adres e-mail!')
+                return;
+            }
+            if (!userEmail.includes(".")) {
+                showError('Adres e-mail musi zawierać kropkę!');
+                return;
+            }
+
+
+            if (!isValidPhoneLength(digits)) {
+                showError("Nieprawidłowa długość numeru!");
+                return;
+            }
+
+            if (invalid) {
+                showError("Numer zawiera niedozwolone znaki!");
+                return;
+            }
+
+            if (digits.length === 11 && !digits.startsWith("48")) {
+                showError("Nieprawidłowy kod kraju!");
+                return;
+            }
+
+
+
+
+                const formData = new FormData(bookingForm);
+
+try {
+            submitButton.disabled = true;
+            submitButton.textContent = "Wysyłanie...";
+    const response = await fetch("/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams(formData).toString()
+    });
+
+    if (!response.ok) {
+        throw new Error("Błąd wysyłania formularza");
+    }
+    formSuccess.classList.remove("text-red-400");
+    formSuccess.classList.add("text-emerald-300");
+
+    formSuccess.classList.remove("border-red-500/30");
+    formSuccess.classList.add("border-emerald-500/30");
+
+    formSuccess.classList.remove("bg-red-950/80");
+    formSuccess.classList.add("bg-emerald-950/80");
+
+    formSuccess.textContent = "Wiadomość została wysłana!";
+    formSuccess.classList.remove("hidden");
+    bookingForm.reset();
+
+} catch (error) {
+    showError("Nie udało się wysłać wiadomości. Spróbuj ponownie.");
+}
+            finally {
+                submitButton.disabled = false;
+                submitButton.textContent = "WYŚLIJ ZAPYTANIE";
+}
+
         });
     </script>
 </body>
